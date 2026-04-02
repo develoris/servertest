@@ -1,4 +1,3 @@
-const { from } = require('@sap/cds/lib/i18n/locale');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
