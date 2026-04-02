@@ -53,5 +53,8 @@ app.delete('/api/data/:id', (req, res) => {
  
 
 app.listen(port, () => {
+  setInterval(()=>{
+    console.log('--- Server is alive ---');
+  }, 1000 * 60 * 2); // log every 2 minutes
   console.log(`Server is running on port ${port}`);
 });
