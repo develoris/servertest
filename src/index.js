@@ -4,6 +4,8 @@ const port = process.env.PORT || 3000;
 
 // CRUD for public testing
 // log all important information about the request
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use((req, res, next) => {
     console.log('--- Incoming Request ---');
   console.log(`${req.method} ${req.url}`);
@@ -14,6 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 const generateLogObject = (req) => {
+    console.log('body', req.body);
   return {
     method: req.method,
     url: req.url,
