@@ -1,3 +1,4 @@
+const { from } = require('@sap/cds/lib/i18n/locale');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -18,6 +19,8 @@ app.use((req, res, next) => {
 const generateLogObject = (req) => {
     console.log('body', req.body);
   return {
+    from: req.ip,
+    fromHost: req.hostname,
     method: req.method,
     url: req.url,
     headers: req.headers,
@@ -55,6 +58,6 @@ app.delete('/api/data/:id', (req, res) => {
 app.listen(port, () => {
   setInterval(()=>{
     console.log('--- Server is alive ---');
-  }, 1000 * 60 * 2); // log every 2 minutes
+  }, 1000 * 60 * 2); // log every 2 minutes, hearbeat to keep the server alive
   console.log(`Server is running on port ${port}`);
 });
